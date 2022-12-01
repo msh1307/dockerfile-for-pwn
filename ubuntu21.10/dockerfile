@@ -23,7 +23,10 @@ RUN pip3 install pwntools
 RUN pip3 install ropgadget
 RUN apt install libcapstone-dev -y
 
-RUN git clone https://github.com/pwndbg/pwndbg ./setup.sh
+RUN git clone https://github.com/pwndbg/pwndbg
+WORKDIR pwndbg
+RUN ./setup.sh
+WORKDIR /root
 RUN echo source ~/pwndbg/gdbinit.py >> ~/.gdbinit
 
 RUN apt install ruby-full -y
