@@ -23,8 +23,8 @@ RUN pip3 install pwntools
 RUN pip3 install ropgadget
 RUN apt install libcapstone-dev -y
 
-RUN git clone https://github.com/hugsy/gef ./gef
-RUN echo source ~/gef/gef.py >> ~/.gdbinit
+RUN git clone https://github.com/pwndbg/pwndbg ./setup.sh
+RUN echo source ~/pwndbg/gdbinit.py >> ~/.gdbinit
 
 RUN apt install ruby-full -y
 RUN gem install one_gadget seccomp-tools
