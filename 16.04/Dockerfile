@@ -7,9 +7,15 @@ ENV PYTHONIOENCODING UTF-8
 ENV LC_CTYPE C.UTF-8
 
 WORKDIR /root
-
-RUN apt update && apt install -y netcat
-RUN apt update && apt install vim git gcc ssh curl wget gdb sudo zsh python3 python3-dev python3-pip libffi-dev build-essential libssl-dev libc6-i386 libc6-dbg gcc-multilib make -y
+RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ xenial main restricted multiverse universe" > /etc/apt/sources.list
+RUN echo "deb-src [arch=amd64] http://archive.ubuntu.com/ubuntu/ xenial main restricted multiverse universe" > /etc/apt/sources.list
+RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ xenial-updates main restricted multiverse universe" >> /etc/apt/sources.list
+RUN echo "deb [arch=amd64] http://archive.ubuntu.com/ubuntu/ xenial-security main restricted multiverse universe" >> /etc/apt/sources.list
+RUN echo "deb-src [arch=amd64] http://archive.ubuntu.com/ubuntu/ xenial-updates main restricted multiverse universe" >> /etc/apt/sources.list
+RUN echo "deb-src [arch=amd64] http://archive.ubuntu.com/ubuntu/ xenial-security main restricted multiverse universe" >> /etc/apt/sources.list
+RUN apt update
+RUN apt install -y netcat
+RUN apt update && apt install vim git gcc ssh curl wget gdb zsh python3 python3-dev python3-pip libffi-dev build-essential libssl-dev libc6-i386 libc6-dbg gcc-multilib make -y
 
 RUN dpkg --add-architecture i386
 RUN apt update
