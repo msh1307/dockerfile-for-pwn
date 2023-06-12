@@ -1,3 +1,4 @@
+#docker run -v C:\:/CTF --privileged -p 23947:23946 -it pwn:22.10
 FROM ubuntu:22.10
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ Asia/Seoul
@@ -7,7 +8,7 @@ WORKDIR /root
 
 RUN apt update && apt install -y netcat-traditional
 RUN apt install vim git gcc ssh curl wget gdb sudo zsh python3 python3-pip libffi-dev build-essential libssl-dev libc6-i386 libc6-dbg gcc-multilib make -y
-RUN apt install -y qemu qemu-system qemu-kvm
+RUN apt install -y qemu-system qemu-kvm
 RUN dpkg --add-architecture i386
 RUN apt update
 RUN apt install libc6:i386 -y

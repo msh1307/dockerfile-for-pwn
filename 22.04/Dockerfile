@@ -1,4 +1,4 @@
-# docker run -v C:\:/CTF --privileged -it [img]
+# docker run -v C:\:/CTF --privileged -p 23947:23946 -it pwn:22.10
 FROM ubuntu:22.04
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ Asia/Seoul
