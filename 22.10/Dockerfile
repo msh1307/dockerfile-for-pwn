@@ -4,11 +4,10 @@ ENV TZ Asia/Seoul
 ENV PYTHONIOENCODING UTF-8
 ENV LC_CTYPE C.UTF-8
 WORKDIR /root
-# RUN sed -i -r 's/([a-z]{2}.)?archive.ubuntu.com/old-releases.ubuntu.com/g' /etc/apt/sources.list
-# RUN sed -i -r 's/security.ubuntu.com/old-releases.ubuntu.com/g' /etc/apt/sources.list
-RUN apt update && apt upgrade -y
-RUN apt-get install netcat-traditional -y
+
+RUN apt update && apt install -y netcat-traditional
 RUN apt install vim git gcc ssh curl wget gdb sudo zsh python3 python3-pip libffi-dev build-essential libssl-dev libc6-i386 libc6-dbg gcc-multilib make -y
+RUN apt install -y qemu qemu-system qemu-kvm
 RUN dpkg --add-architecture i386
 RUN apt update
 RUN apt install libc6:i386 -y
@@ -23,7 +22,8 @@ WORKDIR pwndbg
 RUN ./setup.sh
 WORKDIR /root
 RUN echo source ~/pwndbg/gdbinit.py >> ~/.gdbinit
-
+# REMOTE DEBUGGING
+EXPOSE 23946
 RUN apt install ruby-full -y
 RUN gem install one_gadget seccomp-tools
 
@@ -33,7 +33,7 @@ RUN git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
 RUN echo "fpath+=("$HOME/.zsh/pure")\nautoload -U promptinit; promptinit\nprompt pure" >> ~/.zshrc
 
 RUN git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
-RUN echo "source ./zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
+RUN echo "source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zshrc
 
 RUN git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 RUN echo "source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
