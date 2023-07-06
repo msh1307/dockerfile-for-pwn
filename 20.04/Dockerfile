@@ -1,12 +1,10 @@
-# docker run -v C:\:/CTF --privileged -p 23946:23946 -it pwn:22.10
-FROM ubuntu:22.04
+# docker run -v C:\:/CTF --privileged -p 23946:23946 -it pwn:20.04
+FROM ubuntu:20.04
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ Asia/Seoul
 ENV PYTHONIOENCODING UTF-8
 ENV LC_CTYPE C.UTF-8
 WORKDIR /root
-# RUN sed -i -r 's/([a-z]{2}.)?archive.ubuntu.com/old-releases.ubuntu.com/g' /etc/apt/sources.list
-# RUN sed -i -r 's/security.ubuntu.com/old-releases.ubuntu.com/g' /etc/apt/sources.list
 RUN apt update && apt install -y netcat
 RUN apt install vim git gcc ssh curl wget gdb sudo zsh python3 python3-pip libffi-dev build-essential libssl-dev libc6-i386 libc6-dbg gcc-multilib make -y
 RUN apt install -y qemu qemu-system qemu-kvm
