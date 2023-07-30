@@ -39,3 +39,7 @@ RUN echo "source ~/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> ~/.zs
 RUN git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 RUN echo "source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
 RUN echo "ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=111'" >> ~/.zshrc
+RUN git clone https://github.com/msh1307/init
+RUN /root/init/zsh-plugin.sh
+RUN apt install qemu-user-static file
+
