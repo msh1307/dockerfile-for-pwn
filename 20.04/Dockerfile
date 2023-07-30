@@ -39,6 +39,8 @@ RUN git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosu
 RUN echo "source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
 RUN echo "ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=111'" >> ~/.zshrc
 RUN git clone https://github.com/msh1307/init
+WORKDIR /root/init
 RUN /root/init/zsh-plugin.sh
-RUN apt install qemu-user-static file
+WORKDIR /root
+RUN apt install qemu-user-static file -y
 
