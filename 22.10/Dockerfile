@@ -9,6 +9,7 @@ WORKDIR /root
 RUN apt update && apt install -y netcat-traditional
 RUN apt install vim git gcc ssh curl wget gdb sudo zsh python3 python3-pip libffi-dev build-essential libssl-dev libc6-i386 libc6-dbg gcc-multilib make -y
 RUN apt install -y qemu-system qemu-kvm
+RUN apt install -y python-is-python3
 RUN dpkg --add-architecture i386
 RUN apt update
 RUN apt install libc6:i386 -y
@@ -41,6 +42,6 @@ RUN echo "source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
 RUN echo "ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=111'" >> ~/.zshrc
 RUN git clone https://github.com/msh1307/init
 WORKDIR /root/init
-RUN /root/init/zsh-plugin.sh
+RUN /root/init/go.sh
 WORKDIR /root
 RUN apt install qemu-user-static file

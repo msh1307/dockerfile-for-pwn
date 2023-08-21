@@ -19,6 +19,7 @@ RUN pip3 install keystone-engine
 RUN pip3 install pwntools
 RUN pip3 install ropgadget
 RUN apt install libcapstone-dev -y
+RUN apt install -y python-is-python3
 RUN git clone https://github.com/pwndbg/pwndbg
 WORKDIR pwndbg
 RUN ./setup.sh
@@ -42,7 +43,7 @@ RUN echo "source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
 RUN echo "ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=111'" >> ~/.zshrc
 RUN git clone https://github.com/msh1307/init
 WORKDIR /root/init
-RUN /root/init/zsh-plugin.sh
+RUN /root/init/go.sh
 WORKDIR /root
 RUN apt install qemu-user-static file
 

@@ -12,6 +12,7 @@ RUN dpkg --add-architecture i386
 RUN apt update
 RUN apt install libc6:i386 -y
 RUN python3 -m pip install --upgrade pip
+RUN sudo apt install -y python-is-python3
 RUN pip3 install unicorn
 RUN pip3 install keystone-engine
 RUN pip3 install pwntools
@@ -40,7 +41,7 @@ RUN echo "source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh" >> ~/.zshrc
 RUN echo "ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=111'" >> ~/.zshrc
 RUN git clone https://github.com/msh1307/init
 WORKDIR /root/init
-RUN /root/init/zsh-plugin.sh
+RUN /root/init/go.sh
 WORKDIR /root
 RUN apt install qemu-user-static file -y
 
