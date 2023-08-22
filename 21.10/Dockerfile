@@ -27,7 +27,8 @@ RUN git clone https://github.com/pwndbg/pwndbg
 WORKDIR pwndbg
 RUN ./setup.sh
 WORKDIR /root
-RUN echo source ~/pwndbg/gdbinit.py >> ~/.gdbinit
+RUN echo "source ~/pwndbg/gdbinit.py\nsource ~/Pwngdb/pwngdb.py\nsource ~/Pwngdb/angelheap/gdbinit.py\ndefine hook-run\npython\nimport angelheap\nangelheap.init_angelheap()\nend\nend" >> ~/.gdbinit
+
 
 RUN apt install ruby-full -y
 RUN gem install one_gadget seccomp-tools

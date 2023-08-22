@@ -23,7 +23,7 @@ RUN pip3 install ropgadget
 RUN apt install libcapstone-dev -y
 
 RUN git clone https://github.com/hugsy/gef ./gef
-RUN echo source ~/gef/gef.py >> ~/.gdbinit
+RUN echo "source ~/pwndbg/gdbinit.py\nsource ~/Pwngdb/pwngdb.py\nsource ~/Pwngdb/angelheap/gdbinit.py\ndefine hook-run\npython\nimport angelheap\nangelheap.init_angelheap()\nend\nend" >> ~/.gdbinit
 
 RUN apt install ruby-full -y
 RUN gem install one_gadget seccomp-tools
