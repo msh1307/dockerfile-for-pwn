@@ -14,7 +14,7 @@ RUN apt install vim git gcc ssh curl wget gdb sudo zsh python3 python3-pip libff
 RUN dpkg --add-architecture i386
 RUN apt update
 RUN apt install libc6:i386 -y
-
+RUN git clone https://github.com/scwuaptx/Pwngdb
 RUN python3 -m pip install --upgrade pip
 RUN pip3 install unicorn
 RUN pip3 install keystone-engine

@@ -19,6 +19,7 @@ RUN pip3 install keystone-engine
 RUN pip3 install pwntools
 RUN pip3 install ropgadget
 RUN apt install libcapstone-dev -y
+RUN git clone https://github.com/scwuaptx/Pwngdb
 RUN git clone https://github.com/pwndbg/pwndbg
 WORKDIR pwndbg
 RUN ./setup.sh
